@@ -1,0 +1,30 @@
+This is a small map-reduce program which takes the log input of employee gate-pass 
+
+whenever an employee comes in or goes out machine generates a timestamp log
+
+like this
+
+empID       timestamp
+704	    2013-01-01 09:28:10.000
+1790	  2013-01-01 09:28:13.000
+811	    2013-01-01 09:28:17.000
+904	    2013-01-01 09:28:24.000
+1316	  2013-01-01 09:28:31.000
+72	    2013-01-01 09:28:36.000
+1009	  2013-01-01 09:28:41.000
+1543	  2013-01-01 09:28:48.000
+1426	  2013-01-01 09:28:52.000
+867	    2013-01-01 09:28:57.000
+
+we have to get the average time spent by each employee per day inside and outside office
+
+like this
+
+
+empid   date      intime outtime
+1	      2013-1-1		7	    0
+1	      2013-1-2		7	    1
+1	      2013-1-4		3	    2
+1	      2013-1-7		5	    2
+1	      2013-1-8		6	    2
+
