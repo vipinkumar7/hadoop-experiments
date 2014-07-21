@@ -12,6 +12,8 @@ import org.apache.hadoop.io.WritableComparable;
  * 
  * @author Vipin Kumar
  * 
+ *         Employee entity which acts as key to reducer
+ * 
  */
 public class EmpPerDay implements Writable, WritableComparable<EmpPerDay> {
 
@@ -19,18 +21,17 @@ public class EmpPerDay implements Writable, WritableComparable<EmpPerDay> {
 	private IntWritable year = new IntWritable();
 	private IntWritable month = new IntWritable();
 	private IntWritable day = new IntWritable();
-	private LongWritable timestamp = new LongWritable();
 
 	public EmpPerDay() {
 
 	}
 
-	public void set(long empID, int year, int month, int day, long timestamp) {
+	public void set(long empID, int year, int month, int day) {
 		this.empId.set(empID);
 		this.year.set(year);
 		this.month.set(month);
 		this.day.set(day);
-		this.timestamp.set(timestamp);
+
 	}
 
 	public int compareTo(EmpPerDay empPerDay) {
@@ -41,8 +42,6 @@ public class EmpPerDay implements Writable, WritableComparable<EmpPerDay> {
 			compareValue = this.month.compareTo(empPerDay.getDay());
 		if (compareValue == 0)
 			compareValue = this.day.compareTo(empPerDay.getDay());
-		if (compareValue == 0)
-			compareValue = this.timestamp.compareTo(empPerDay.getTimestamp());
 		return compareValue;
 	}
 
@@ -57,7 +56,7 @@ public class EmpPerDay implements Writable, WritableComparable<EmpPerDay> {
 		year.write(out);
 		month.write(out);
 		day.write(out);
-		timestamp.write(out);
+
 	}
 
 	public void readFields(DataInput in) throws IOException {
@@ -65,7 +64,7 @@ public class EmpPerDay implements Writable, WritableComparable<EmpPerDay> {
 		year.readFields(in);
 		month.readFields(in);
 		day.readFields(in);
-		timestamp.readFields(in);
+
 	}
 
 	public LongWritable getEmpId() {
@@ -84,7 +83,4 @@ public class EmpPerDay implements Writable, WritableComparable<EmpPerDay> {
 		return day;
 	}
 
-	public LongWritable getTimestamp() {
-		return timestamp;
-	}
 }

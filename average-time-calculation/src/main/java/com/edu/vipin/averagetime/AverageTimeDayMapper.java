@@ -48,8 +48,7 @@ public class AverageTimeDayMapper extends
 			String day = df.format(date);
 
 			empPerDay.set(empId, Integer.parseInt(year),
-					Integer.parseInt(month), Integer.parseInt(day),
-					date.getTime());
+					Integer.parseInt(month), Integer.parseInt(day));
 
 			timestamp.set(date.getTime());
 

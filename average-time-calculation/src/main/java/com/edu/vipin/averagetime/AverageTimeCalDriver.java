@@ -22,8 +22,9 @@ import org.apache.hadoop.util.ToolRunner;
  */
 public class AverageTimeCalDriver extends Configured implements Tool {
 
-	
-	 private static final Log LOG = LogFactory.getLog(AverageTimeCalDriver.class);
+	private static final Log LOG = LogFactory
+			.getLog(AverageTimeCalDriver.class);
+
 	public static void main(String[] args) {
 
 		try {
@@ -36,7 +37,7 @@ public class AverageTimeCalDriver extends Configured implements Tool {
 
 	@Override
 	public int run(String[] args) throws Exception {
-		
+
 		LOG.info("starting AverageTimeCalDriver");
 		Configuration configuration = getConf();
 
@@ -49,6 +50,8 @@ public class AverageTimeCalDriver extends Configured implements Tool {
 				"/home/hduser/Documents/out/"));
 		job.setPartitionerClass(EmpPerDayPartitioner.class);
 		job.setInputFormatClass(TextInputFormat.class);
+
+		/* set the no of reducer to get each employee report in one file */
 		// job.setNumReduceTasks(2000);
 		job.setOutputFormatClass(TextOutputFormat.class);
 		job.setGroupingComparatorClass(AverageTimeDayGroupComparator.class);
